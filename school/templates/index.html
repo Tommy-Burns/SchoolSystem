@@ -2,7 +2,16 @@
 
 <body>
     {% block content %}
+    <br>
     <h1>Welcome to our online school</h1>
+    <br>
+    {% if searchTerm %}
+    <h6 class="card-title fw-bold">Showing results for "{{ searchTerm }}"</h6>
+    {% endif %}
+    {% if null %}
+    <h3 class="card-title fw-bold">{{ null }}</h3>
+    {% endif %}
+    <br>
     <div class="row row-cols-1 row-cols-md-3 g-4">
         {% for course in courses %}
         <div v-for="course in courses" class="col">
