@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-<body>
+
     {% block content %}
     <br>
     <h1>Welcome to our online school</h1>
@@ -9,7 +9,9 @@
     <h6 class="card-title fw-bold">Showing results for "{{ searchTerm }}"</h6>
     {% endif %}
     {% if null %}
-    <h3 class="card-title fw-bold">{{ null }}</h3>
+    <!-- <h6 class="card-title fw-bold">You searched for "{{ searchTerm }}"</h6> -->
+    <br><br>
+    <h3 class="card-title fw-bold"><p class="lead">{{ null }}</p></h3>
     {% endif %}
     <br>
     <div class="row row-cols-1 row-cols-md-3 g-4">
@@ -21,7 +23,7 @@
               <h5 class="card-title fw-bold">{{ course.name }}</h5>
               <p class="card-text">{{ course.description }}</p>
               <h5 class="card-title fw-bold">$ {{ course.fee }}</h5>
-              <a href="#" class="btn btn-primary">Enroll</a>
+              <a href="{% url 'details' course.id %}" class="btn btn-primary">Enroll</a>
               {% if course.resources %}
               <a href="{{ course.resources }}" class="btn btn-primary">
                 Resources
@@ -34,5 +36,3 @@
       </div>
 
     {% endblock content %}
-</body>
-</html>

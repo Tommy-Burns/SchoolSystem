@@ -12,14 +12,14 @@
 </head>
 <nav class="navbar navbar-expand-lg" style="background-color: #e3f2fd;">
     <div class="container-fluid">
-      <a class="navbar-brand" href="{% url 'index' %}">Course Mine</a>
+      <a class="navbar-brand" href="{% url 'index' %}"><b>CourseMine</b></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
+            <a class="nav-link active" aria-current="page" href="{% url 'index' %}">Home</a>
           </li>
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="#">Login</a>
@@ -30,26 +30,26 @@
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="#">About Us</a>
           </li>
-          </li>
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="#">Our Staff</a>
           </li>
-          </li>
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Contact Us</a>
+            <a class="nav-link active" aria-current="page" href="{% url 'contact' %}">Contact Us</a>
           </li>
           
         </ul>
-        <form class="d-flex" role="search">
+        <form class="d-flex" role="search" action="{% url 'index' %}">
           <input class="form-control me-2" type="text" placeholder="Search Courses" aria-label="Search" name="searchCourse">
           <button class="btn btn-outline-success" type="submit">Search</button>
         </form>
       </div>
     </div>
   </nav>
-
-<div class="container">
+<body>
+  <div class="container">
      {% block content %}
     {% endblock content %}
 </div>
+</body>
+
 </html>
