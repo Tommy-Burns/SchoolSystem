@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<br><br>
+{% for member in members %}
+<div class="container">
+    <div class="row">
+        <div class="col-4">
+            <figure class="figure">
+                <img src="{{ member.image.url }}" class="figure-img img-fluid rounded-4" alt="..." style="border: 5px solid #858585;">
+                <figcaption class="figure-caption">{{ member.name }}</figcaption>
+            </figure>
+        </div>
+        <div class="col-8">
+            <div class="col-8">
+                <div class="card" style="width: auto;">
+                    <div class="card-body">
+                      <h2 class="card-title">{{ member.name }}</h2>
+                      <h4 class="card-title" style="color: #858585;">{{ member.expertise }}</h4>
+                      <h6 class="card-subtitle mb-2 text-muted">{{ member.experience }} years experience.</h6>
+                      <p class="card-text">{{ member.email }}</p>
+                      <a href="{% url 'staff_details' member.id %}" class="btn btn-primary">Go to Person's Page</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>
+{% endfor %}
+</div>
+{% endblock content %}
