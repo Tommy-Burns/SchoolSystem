@@ -2,6 +2,7 @@ import django
 from django.shortcuts import render
 from django.http import HttpResponse as HR
 from django.shortcuts import get_object_or_404
+from django.contrib.auth.decorators import login_required
 from .models import Courses
 
 # Create your views here.
@@ -33,3 +34,11 @@ def details(request, course_id):
 def contact(request):
     return render(request, 'contact.html')
 
+
+@login_required
+def checkout(request, course_name):
+    course = get_object_or_404(Courses, name=course_name)
+
+    return render(request, 'checkout.html', {
+        'course': course,
+    })

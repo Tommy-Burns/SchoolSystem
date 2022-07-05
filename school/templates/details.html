@@ -9,7 +9,7 @@
                 <div class="card" style="width: auto;">
                     <img src="{{ course.cover.url }}" class="card-img-top" alt="...">
                     <div class="card-body">
-                      <a href="#" class="btn btn-primary">Enroll</a>
+                      <a href="{% url 'checkout' course.name %}" class="btn btn-primary">Enroll</a>
                     </div>
                 </div>
             </div>

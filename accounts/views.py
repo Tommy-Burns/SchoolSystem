@@ -7,6 +7,8 @@ from django.shortcuts import redirect
 from django.db import IntegrityError
 from django.contrib.auth.decorators import login_required
 
+from .models import RegisteredCourses
+
 # Create your views here.
 def signup(request):    
     if request.method == 'GET':
@@ -59,3 +61,19 @@ def user_dashboard(request):
     return render(request, 'dashboard.html', {
         
     })
+    
+    
+def save_course(request):
+    if request.method == 'GET':
+        return render(request, 'checkout.html',{})            
+    else:
+        try:
+            reg_course = RegisteredCourses.objects.create(
+                user_name=request.user.username,
+            registered_course=request.POST['coursename']
+            )
+            reg_course.save() 
+            return redirect('dashboard')
+        except IntegrityError:
+                return render(request, 'checkout.html', {})
+
