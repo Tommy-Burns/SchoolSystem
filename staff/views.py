@@ -9,8 +9,8 @@ def staff(request):
         'members': members,
     })
     
-def staff_details(request, staff_id):
-    staff = get_object_or_404(Staff, pk=staff_id)
+def staff_details(request, staff_name):
+    staff = get_object_or_404(Staff, name=staff_name)
     return render(request, 'staff-details.html', {
         'staff': staff,
     })
