@@ -45,6 +45,29 @@
   <!-- End of top section -->
   <br>
   <h4 class="display-6">These are your registered courses...</h4>
+  <br>
+  <div class="row row-cols-1 row-cols-md-3 g-4" >
+    {% for items in courses %}
+
+    {% for course in items %}
+    <div v-for="course in courses" class="col">
+      <div class="card">
+        <img class="card-img-top" src="{{ course.cover.url }}" />
+        <div class="card-body">
+          <h5 class="card-title fw-bold">{{ course.name }}</h5>
+          <p class="card-text">{{ course.description }}</p>
+          <a href="{% url 'details' course.id %}" class="btn btn-primary">Start Course</a>
+          {% if course.resources %}
+          <a href="{{ course.resources }}" class="btn btn-primary">
+            Resources
+          </a>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+    {% endfor %}
+  </div>
 
 </div>
 {% endblock content %}

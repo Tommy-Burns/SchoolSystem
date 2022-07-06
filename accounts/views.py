@@ -8,6 +8,7 @@ from django.db import IntegrityError
 from django.contrib.auth.decorators import login_required
 
 from .models import RegisteredCourses
+from school.models import Courses
 
 # Create your views here.
 def signup(request):    
@@ -55,11 +56,22 @@ def login_user(request):
             })
         else:
             login(request, user)
-            return redirect('home')
+            return redirect('index')
 
 def user_dashboard(request):
+    username = request.user.username
+    user_courses = RegisteredCourses.objects.filter(user_name=username)
+    courses = []
+    for course in user_courses:
+        course_to_add = Courses.objects.filter(name=course.registered_course)
+        if course_to_add not in courses:
+            courses.append(course_to_add)
+        else:
+            courses.append(course_to_add)
+    # print('***********************COURSES********************', courses)
+    # print('***********************COURSES -- 0 ********************', courses[0])
     return render(request, 'dashboard.html', {
-        
+        'courses': courses,
     })
     
     
@@ -75,5 +87,8 @@ def save_course(request):
             reg_course.save() 
             return redirect('dashboard')
         except IntegrityError:
-                return render(request, 'checkout.html', {})
+                error = 'You have already registered this course'
+                return render(request, 'checkout.html', {
+                    'error': error,
+                })
 
