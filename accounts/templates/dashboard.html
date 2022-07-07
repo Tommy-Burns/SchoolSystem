@@ -10,9 +10,7 @@
             <div class="card-body">
               <h5 class="card-title">Welcome, {{ user.first_name }} {{user.last_name }}</h5>
               <h6 class="card-subtitle mb-2 text-muted">This is your dashboard</h6>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <a href="#" class="card-link">Start Course</a>
-              <a href="#" class="card-link">Resources</a>
+              <p class="card-text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Veniam magni quasi sed obcaecati nihil quibusdam.</p>
             </div>
         </div>
        </div>
@@ -56,7 +54,7 @@
         <div class="card-body">
           <h5 class="card-title fw-bold">{{ course.name }}</h5>
           <p class="card-text">{{ course.description }}</p>
-          <a href="{% url 'details' course.id %}" class="btn btn-primary">Start Course</a>
+          <a href="{% url 'resume_course' course.name %}" class="btn btn-primary">Resume Course</a>
           {% if course.resources %}
           <a href="{{ course.resources }}" class="btn btn-primary">
             Resources

@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, render
 from .forms import UserCreateForm
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import AuthenticationForm
@@ -92,3 +92,15 @@ def save_course(request):
                     'error': error,
                 })
 
+@login_required
+def resume_course(request, course_name):
+    print('***********************COURSES NAME********************', course_name)
+    course = get_object_or_404(Courses, name=course_name)
+    print('***********************COURSE FOUND********************', course)
+    rangge = ['One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten', 'Eleven', 'Twelve', 'Thirteen', 'Fourteen', 'Fifteen']
+    rangge1 = range(4)
+    return render(request, 'course_page.html', {
+        'course': course,
+        'rangge': rangge,
+        'rangge1': rangge1,
+    })

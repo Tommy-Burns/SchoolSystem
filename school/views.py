@@ -66,8 +66,8 @@ def index(request):
         })
 
 
-def details(request, course_id):
-    course = get_object_or_404(Courses, pk=course_id)
+def details(request, course_name):
+    course = get_object_or_404(Courses, name=course_name)
     return render(request, 'details.html', {
         'course': course,
     })

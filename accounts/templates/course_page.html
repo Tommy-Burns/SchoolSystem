@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<br>
+
+    {% if course %}
+        <div class="row">
+            <div class="col-8">
+                <div class="card" style="width: auto;">
+                    <img src="{{ course.cover.url }}" class="card-img-top" alt="...">
+                    
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="card" style="width: auto;">
+                    <div class="card-body">
+                      <h5 class="card-title">{{ course.name }}</h5>
+                      <h6 class="card-subtitle mb-2 text-muted">Fee: $ {{ course.fee }}</h6>
+                      <p class="card-text">{{ course.description }}</p>
+                      <a href="#" class="card-link">Instructor's page</a>
+                      <a href="#" class="card-link">Resources</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br><br>
+    <h2 class="card-title">Course Outline</h2>
+    <hr class="border-light border-3 opacity-75" style="background-color: #9d9d9d;">
+
+    <div class="accordion accordion-flush" id="accordionFlushExample">
+        
+        {% for i in rangge %}
+            <div class="accordion-item">
+          <h2 class="accordion-header" id="flush-heading{{ i }}">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse{{ i }}" aria-expanded="false" aria-controls="flush-collapse{{ i }}">
+              Chapter {{ i }}
+            </button>
+          </h2>
+          <div id="flush-collapse{{ i }}" class="accordion-collapse collapse" aria-labelledby="flush-heading{{ i }}" data-bs-parent="#accordionFlushExample">
+            <div class="accordion-body">
+                <ul class="list-group">
+                    <li class="list-group-item">Lesson 1</li>
+                    <li class="list-group-item">Lesson 2</li>
+                    <li class="list-group-item">Lesson 3</li>
+                    <li class="list-group-item">Lesson 4</li>
+                    <li class="list-group-item">Lesson 5</li>
+                </ul>
+                <br>
+                <h3 class="card-title fw-bold"><p class="lead">Rate Chapter</p></h3>
+                <button type="button" class="btn btn-light" style="background-color: white;"><ion-icon name="star-outline"></ion-icon></button>
+                <button type="button" class="btn btn-light" style="background-color: white;"><ion-icon name="star-outline"></ion-icon></button>
+                <button type="button" class="btn btn-light" style="background-color: white;"><ion-icon name="star-outline"></ion-icon></button>
+                <button type="button" class="btn btn-light" style="background-color: white;"><ion-icon name="star-outline"></ion-icon></button>
+                <button type="button" class="btn btn-light" style="background-color: white;"><ion-icon name="star-outline"></ion-icon></button>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      <br><br>
+      <h2 class="card-title">Course Reviews</h2>
+      {% for i in rangge1 %}
+      <br>
+      <div class="card">
+        <div class="card-header">
+          Student Name
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">Review</h5>
+            <p class="card-text">
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor, velit labore possimus similique laborum natus.
+            </p>
+        </div>
+      </div>
+        {% endfor %}
+
+    {% endif %}
+{% endblock content %}
