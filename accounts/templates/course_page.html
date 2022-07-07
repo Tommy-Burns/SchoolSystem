@@ -24,6 +24,12 @@
             </div>
         </div>
     </div>
+    <br>
+    <h1 class="card-title fw-bold"><p class="lead">Your Progress</p></h1>
+    <div class="progress" style="height:2rem;">
+        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="{{ num }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ num }}%"><h4>{{ num }}%</h4></div>
+      </div>
+
     <br><br>
     <h2 class="card-title">Course Outline</h2>
     <hr class="border-light border-3 opacity-75" style="background-color: #9d9d9d;">
@@ -62,6 +68,7 @@
       <h2 class="card-title">Course Reviews</h2>
       {% for i in rangge1 %}
       <br>
+      <div class="row row-cols-1 row-cols-md-3 g-4">
       <div class="card">
         <div class="card-header">
           Student Name
@@ -73,6 +80,7 @@
             </p>
         </div>
       </div>
+    </div>
         {% endfor %}
 
     {% endif %}

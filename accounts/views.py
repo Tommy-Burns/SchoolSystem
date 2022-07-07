@@ -1,3 +1,4 @@
+import random
 from django.shortcuts import get_object_or_404, render
 from .forms import UserCreateForm
 from django.contrib.auth.models import User
@@ -58,6 +59,7 @@ def login_user(request):
             login(request, user)
             return redirect('index')
 
+@login_required
 def user_dashboard(request):
     username = request.user.username
     user_courses = RegisteredCourses.objects.filter(user_name=username)
@@ -99,8 +101,10 @@ def resume_course(request, course_name):
     print('***********************COURSE FOUND********************', course)
     rangge = ['One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten', 'Eleven', 'Twelve', 'Thirteen', 'Fourteen', 'Fifteen']
     rangge1 = range(4)
+    num = random.randint(35, 95)
     return render(request, 'course_page.html', {
         'course': course,
         'rangge': rangge,
         'rangge1': rangge1,
+        'num': num,
     })
