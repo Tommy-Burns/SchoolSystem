@@ -7,7 +7,34 @@
     <br>
     {% if searchTerm %}
     <h6 class="card-title fw-bold">Showing results for "{{ searchTerm }}"</h6>
+
+    {% if user.is_authenticated and not null %}
+    <h3 class="card-title fw-bold"><p class="lead">If a course is already enrolled, it wouldn't appear here.</p></h3>
     {% endif %}
+  ` 
+
+    <div class="row row-cols-1 row-cols-md-3 g-4" >
+      {% for course in found_courses %}
+      <div v-for="course in courses" class="col">
+        <div class="card">
+          <img class="card-img-top" src="{{ course.cover.url }}" />
+          <div class="card-body">
+            <h5 class="card-title fw-bold">{{ course.name }}</h5>
+            <p class="card-text">{{ course.description }}</p>
+            <h5 class="card-title fw-bold">$ {{ course.fee }}</h5>
+            <a href="{% url 'details' course.id %}" class="btn btn-primary">Enroll</a>
+            {% if course.resources %}
+            <a href="{{ course.resources }}" class="btn btn-primary">
+              Resources
+            </a>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    {% endif %}
+    
     {% if null %}
     <br><br>
     <h3 class="card-title fw-bold"><p class="lead">{{ null }}</p></h3>
