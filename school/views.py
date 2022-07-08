@@ -83,3 +83,7 @@ def checkout(request, course_name):
     return render(request, 'checkout.html', {
         'course': course,
     })
+    
+    
+def about(request):
+    return render(request, 'about.html')

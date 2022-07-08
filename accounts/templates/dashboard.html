@@ -19,7 +19,7 @@
         <div class="p-3" style="width: 13rem; background: rgba(255, 255, 255, 0);">
           <div class="container">
             <button type="button" class="btn btn-primary position-relative btn-lg">
-              Edit Profile
+              Profile
               <span class="position-absolute top-0 start-100 translate-middle p-2 bg-danger border border-light rounded-circle">
                 <span class="visually-hidden">New alerts</span>
               </span>
@@ -27,7 +27,7 @@
           </div>
             <br>
           <div class="container">
-            <button type="button" class="btn btn-primary position-relative btn-lg">
+            <button type="button" class="btn btn-primary position-relative btn-lg" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
               Notifications
               <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                 99+
@@ -35,6 +35,28 @@
               </span>
             </button>
           </div>
+
+    <!-- Messages Modal -->
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="staticBackdropLabel">Messages for {{ user.first_name }}</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p>
+              If you have any messages and notifications, they will appear here.
+            </p>
+            <p>
+              Click close to close.
+            </p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
         </div>
       </div>
     </div>

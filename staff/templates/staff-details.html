@@ -13,8 +13,6 @@
                     <p class="card-text">{{ staff.experience }} years experience.</p>
                     <h5 class="card-title">Mail: {{ staff.email }}</h5>
                     <h5 class="card-title">Contact: 0{{ staff.contact }}</h5>
-                    <a href="#" class="card-link">Instructor's page</a>
-                    <a href="#" class="card-link">Resources</a>
                     </div>
                 </div>
             </div>
@@ -22,11 +20,51 @@
         <div class="col-4">
             <div class="card" style="width: 20rem; border: 4px solid #c9c9c9;">
                 <img src="{{ staff.image.url }}" class="card-img-top" alt="...">
+               
+                <!-- Send Message -->
                 <div class="card-body">
-                    <a href="#" class="btn btn-primary">Contact Me</a>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Send me a message</button>
+
+
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form>
+                            <div class="mb-3">
+                                <label for="recipient-name" class="col-form-label">Recipient:</label>
+                                <input type="text" class="form-control" id="recipient-name" value="{{ staff.name }}" readonly>
+                            </div>
+                            <div class="mb-3">
+                                <label for="message-text" class="col-form-label">Message:</label>
+                                <textarea class="form-control" id="message-text"></textarea>
+                            </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Send message</button>
+                        </div>
+                        </div>
+                    </div>
+                    </div>
                 </div>
             </div>
         </div>
 </div>
+
+<!-- About Section -->
+<h3 class="card-title">About Me</h3>
+    <hr>
+    <p class="lh-1">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ducimus possimus dolorem dolor quod veniam velit laboriosam sapiente, tempore iure voluptate architecto saepe, ratione neque quam accusamus cum veritatis. Soluta dolor quibusdam eum deleniti minus et sint voluptas ea nam necessitatibus aperiam cupiditate architecto, voluptate eaque quod temporibus ad corporis quia labore cum quis. Totam voluptatem inventore quia, numquam necessitatibus eveniet pariatur quo dignissimos nemo optio quos dolores esse harum, culpa nihil voluptates sint consequuntur mollitia rem repellendus eius soluta error sed! Suscipit nesciunt eligendi animi facere quis delectus tenetur repudiandae optio laborum a, molestiae pariatur fugiat autem corporis magnam. Harum.</p>
+    <p class="lh-sm">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Facere aliquam commodi, illum laborum sint deleniti pariatur sed praesentium harum blanditiis asperiores itaque tenetur iusto accusamus, debitis exercitationem reprehenderit similique? Animi amet, eaque at eius fugit non ab saepe, earum ea doloremque illum corrupti consequuntur nesciunt suscipit voluptas, asperiores necessitatibus nulla magni voluptate? Eos molestias quos minima. Possimus laborum labore neque natus incidunt tenetur laudantium id. Laudantium facilis at animi illo soluta nisi odit aperiam quod sint voluptate temporibus iure expedita dolorum cupiditate assumenda minima, qui ullam consequuntur autem odio, quae a accusamus necessitatibus! Magni perferendis facere dolores ipsa quaerat incidunt possimus. Saepe temporibus nobis, veritatis eligendi sunt quisquam. Asperiores deserunt in nam aut veniam dolorem eius praesentium tenetur explicabo itaque fuga quod similique repellat nobis quia possimus doloremque, ipsa ipsum recusandae enim porro culpa suscipit omnis laudantium? Iusto, illo excepturi magnam reprehenderit ullam placeat earum ea, aperiam, soluta sequi commodi?</p>
+    <p class="lh-base">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quam repellendus nemo porro iste tempora ea! Molestias quae qui voluptas accusantium amet quod temporibus fuga dignissimos deleniti culpa! Dolores exercitationem labore, earum natus sequi optio fuga ad laudantium quidem recusandae porro asperiores incidunt magnam quos rem reiciendis velit. Voluptates voluptatum laboriosam optio, dicta repellat minus quam vel placeat, cum consequuntur sed? Optio velit accusamus ullam cum illum qui illo sint. Deleniti quam delectus iure ducimus, adipisci obcaecati labore consectetur laborum eveniet illo quaerat, ipsa corporis placeat.</p>
+    <p class="lh-lg">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa sit quas quam dicta necessitatibus nulla hic, rerum iusto, enim itaque odit. Ipsa ipsam aliquid tenetur iusto debitis sed fuga temporibus quisquam repellat eum ullam praesentium, est optio quis architecto quia!</p>
+    
+
 {% endif %}
 {% endblock content %}
