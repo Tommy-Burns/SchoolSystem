@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="card text-center">
+    <div class="card-header">
+      
+    </div>
+    <div class="card-body">
+      <h6 class="display-1">User Dashboard</h6>
+      <h1 class="display-6">{{ user.username }}</h1>
+    </div>
+  </div>
+  
+  <!-- Details -->
+  <br><br>
+  <h1 class="display-6">Your Profile</h1>
+  <div class="form-floating mb-3">
+    <input type="text" class="form-control" id="floatingInput" placeholder="Username" value="{{ user.username }}" readonly>
+    <label for="floatingInput">Username</label>
+  </div>
+  <div class="form-floating mb-3">
+    <input type="text" class="form-control" id="floatingInput" placeholder="First Name(s)" value="{{ user.first_name }}" readonly>
+    <label for="floatingInput">First Name(s)</label>
+  </div>
+  <div class="form-floating mb-3">
+    <input type="text" class="form-control" id="floatingInput" placeholder="Last Name" value="{{ user.last_name }}" readonly>
+    <label for="floatingInput">Last Name</label>
+  </div>
+  <div class="form-floating mb-3">
+    <input type="email" class="form-control" id="floatingEmail" placeholder="Email" value="{{ user.email }}" readonly>
+    <label for="floatingEmail">Email</label>
+  </div>
+  <br>
+  <!-- End of Details -->
+
+<div class="dropdown">
+    <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
+      Change Password
+    </button>
+    <form class="dropdown-menu p-4" method="POST">
+      {% csrf_token %}
+      <div class="mb-3">
+        <label for="exampleDropdownFormPassword2" class="form-label">Current Password</label>
+        <input type="password" class="form-control" id="exampleDropdownFormPassword2" placeholder="Current Password">
+      </div>
+      <div class="mb-3">
+        <label for="exampleDropdownFormPassword2" class="form-label">New Password</label>
+        <input type="password" class="form-control" id="exampleDropdownFormPassword2" placeholder=" New Password">
+      </div>
+      
+      <button type="submit" class="btn btn-primary">Change</button>
+    </form>
+  </div>
+{% endblock content %}

@@ -70,8 +70,6 @@ def user_dashboard(request):
             courses.append(course_to_add)
         else:
             courses.append(course_to_add)
-    # print('***********************COURSES********************', courses)
-    # print('***********************COURSES -- 0 ********************', courses[0])
     return render(request, 'dashboard.html', {
         'courses': courses,
     })
@@ -96,9 +94,7 @@ def save_course(request):
 
 @login_required
 def resume_course(request, course_name):
-    print('***********************COURSES NAME********************', course_name)
     course = get_object_or_404(Courses, name=course_name)
-    print('***********************COURSE FOUND********************', course)
     rangge = ['One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten', 'Eleven', 'Twelve', 'Thirteen', 'Fourteen', 'Fifteen']
     rangge1 = range(4)
     num = random.randint(35, 95)
@@ -108,3 +104,9 @@ def resume_course(request, course_name):
         'rangge1': rangge1,
         'num': num,
     })
+
+
+@login_required
+def user_profile(request, user_name):
+    user_name = request.user.username
+    return render(request, 'profile.html', {})

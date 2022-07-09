@@ -18,12 +18,12 @@
       <div class="col">
         <div class="p-3" style="width: 13rem; background: rgba(255, 255, 255, 0);">
           <div class="container">
-            <button type="button" class="btn btn-primary position-relative btn-lg">
+            <a type="button" class="btn btn-primary position-relative btn-lg" href="{% url 'user_profile' user.username %}">
               Profile
               <span class="position-absolute top-0 start-100 translate-middle p-2 bg-danger border border-light rounded-circle">
                 <span class="visually-hidden">New alerts</span>
               </span>
-            </button>
+            </a>
           </div>
             <br>
           <div class="container">
