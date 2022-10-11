@@ -4,7 +4,7 @@ from django.http import HttpResponse as HR
 from django.shortcuts import get_object_or_404
 from django.contrib.auth.decorators import login_required
 from .models import Courses
-from accounts.models import RegisteredCourses
+from accounts.models import UserRegCourses
 
 
 # Create your views here.
@@ -25,7 +25,7 @@ def index(request):
         else:
             if request.user:        
                 username = request.user.username
-                user_courses = RegisteredCourses.objects.filter(user_name=username)
+                user_courses = UserRegCourses.objects.filter(user_name=username)
                 enroll_excluded = searched_courses.filter(name__in=[i.registered_course for i in user_courses])
                 found_courses = searched_courses.difference(enroll_excluded)
                 
@@ -47,7 +47,7 @@ def index(request):
     
     if request.user:        
         username = request.user.username
-        user_courses = RegisteredCourses.objects.filter(user_name=username)
+        user_courses = UserRegCourses.objects.filter(user_name=username)
         enroll_excluded = Courses.objects.filter(name__in=[i.registered_course for i in user_courses])
         not_enrolled = courses.difference(enroll_excluded)
 

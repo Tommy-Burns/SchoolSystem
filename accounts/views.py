@@ -8,7 +8,7 @@ from django.shortcuts import redirect
 from django.db import IntegrityError
 from django.contrib.auth.decorators import login_required
 
-from .models import RegisteredCourses
+from .models import UserRegCourses
 from school.models import Courses
 
 # Create your views here.
@@ -62,7 +62,7 @@ def login_user(request):
 @login_required
 def user_dashboard(request):
     username = request.user.username
-    user_courses = RegisteredCourses.objects.filter(user_name=username)
+    user_courses = UserRegCourses.objects.filter(user_name=username)
     courses = []
     for course in user_courses:
         course_to_add = Courses.objects.filter(name=course.registered_course)
@@ -80,7 +80,7 @@ def save_course(request):
         return render(request, 'checkout.html',{})            
     else:
         try:
-            reg_course = RegisteredCourses.objects.create(
+            reg_course = UserRegCourses.objects.create(
                 user_name=request.user.username,
             registered_course=request.POST['coursename']
             )
@@ -110,3 +110,11 @@ def resume_course(request, course_name):
 def user_profile(request, user_name):
     user_name = request.user.username
     return render(request, 'profile.html', {})
+
+
+@login_required
+def delete_course(request, course_id):
+    course = get_object_or_404(UserRegCourses, field_name=course_id)
+    print('*****************COURSE******************', course)
+    # course.delete()
+    return redirect('dashboard')
