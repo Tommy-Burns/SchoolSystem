@@ -32,6 +32,8 @@ I look forward to building more interesting and powerful apps and your expert ad
 #### Resume Course Page
 ![Resume-Course](./README_images/resume-course.jpg)
 
+---
+---
 ```js
 const proud_of_myself = () => {
   console.log('🎉');
